@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom'
 
 import { Grid } from '@material-ui/core'
 import BodyCard from './BodyCard'
+
 
 const cardContent = 
     {
@@ -10,28 +12,25 @@ const cardContent =
         imageUrl: "https://picsum.photos/150"
     }
 
-function Content() {
+function PostContent() {
+    const { id } = useParams();
     const [post, setPosts] = useState([])
 
     useEffect(() => {
-        // axios.get('https://jsonplaceholder.typicode.com/posts')
-        axios.get('http://127.0.0.1:8000/api/posts/')
+        // axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        axios.get(`http://127.0.0.1:8000/api/posts/${id}`)
         .then(res => {
             setPosts(res.data)
         })
     }, [])
-    const getCardContent = getObj => {
-        const bodyCardContent = {...getObj, ...cardContent};
-        return (
-            <Grid item xs={12} sm={4} key={getObj.id}>
-                <BodyCard {...bodyCardContent} />
-            </Grid>
-        );
-    };
+
     return (
         <Grid container spacing={2}>
-            {post.map(contentObj => getCardContent(contentObj))}
+            <Grid item xs={12} key={post.id}>
+                <BodyCard {...{...post, ...cardContent}} />
+            </Grid>
         </Grid>
     )
 }
-export default Content
+
+export default PostContent
