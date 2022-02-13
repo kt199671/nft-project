@@ -23,6 +23,19 @@ const useStyles = makeStyles({
     pos: {
       marginBottom: 12,
     },
+    cHeader: {
+        height: '50px',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        "& .MuiCardHeader-content": {
+            overflow: 'hidden'
+        }
+    },
+    cContent: {
+        height: '200px',
+        overflow: 'hidden'
+    }
 });
 
 
@@ -39,10 +52,11 @@ function BodyCard(props) {
                     <StarBorderOutlinedIcon />
                 </IconButton>
                 }
+                className={classes.cHeader}
                 title={title}
             />
             <CardMedia style={{ height: "150px" }} image={imageUrl} />
-            <CardContent>
+            <CardContent className={classes.cContent}>
             <Typography variant="body2" component="p">
                 {body}
             </Typography>
