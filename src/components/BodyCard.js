@@ -63,7 +63,6 @@ function BodyCard(props) {
             </CardContent>
             <CardActions>
             <Button size="small" href={`/post/${id}`}>詳細をみる</Button>
-
             </CardActions>
         </Card>
     );

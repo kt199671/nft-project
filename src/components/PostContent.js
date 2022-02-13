@@ -17,7 +17,8 @@ function PostContent() {
     const [post, setPosts] = useState([])
 
     useEffect(() => {
-        axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        // axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        axios.get(`http://127.0.0.1:8000/api/posts/${id}`)
         .then(res => {
             setPosts(res.data)
         })
