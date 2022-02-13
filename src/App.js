@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core';
 import Header from './components/Header';
 import Content from './components/Content';
 import About from './components/About';
+import PostContent from './components/PostContent';
 
 import {
   BrowserRouter as Router,
@@ -26,6 +27,12 @@ function App() {
             </Route>
             <Route path="/about">
               <About />
+            </Route>
+            <Route exact path="/post">
+              <PostContent />
+            </Route>
+            <Route path="/post/:id">
+              <PostContent />
             </Route>
           </Switch>
         </Router>
