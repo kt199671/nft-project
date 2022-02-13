@@ -62,7 +62,8 @@ function BodyCard(props) {
             </Typography>
             </CardContent>
             <CardActions>
-            <Button size="small">詳細をみる</Button>
+            <Button size="small" href={`/post/${id}`}>詳細をみる</Button>
+
             </CardActions>
         </Card>
     );
