@@ -30,18 +30,27 @@ const cardContents = [
 ]
 
 function Content() {
+    const [post, setPosts] = useState([])
+
+    useEffect(() => {
+        // axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get('http://127.0.0.1:8000/api/posts/')
+        .then(res => {
+            setPosts(res.data)
+        })
+    }, [])
     const getCardContent = getObj => {
+        const bodyCardContent = {...getObj, ...cardContent};
         return (
-            <Grid item xs={12} sm={4}>
-                <BodyCard {...getObj} />
+            <Grid item xs={12} sm={4} key={getObj.id}>
+                <BodyCard {...bodyCardContent} />
             </Grid>
         );
     };
     return (
         <Grid container spacing={2}>
-            {cardContents.map(contentObj => getCardContent(contentObj))}
+            {post.map(contentObj => getCardContent(contentObj))}
         </Grid>
     )
 }
-
 export default Content
