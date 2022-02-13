@@ -1,40 +1,25 @@
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+
 import { Grid } from '@material-ui/core'
-import React from 'react'
 import BodyCard from './BodyCard'
 
-const cardContents = [
+const cardContent = 
     {
-        title: "タイトル1",
-        subheader: "サブヘッダー1",
         avatarUrl: "https://joeschmoe.io/api/v1/random",
         imageUrl: "https://picsum.photos/150"
-    },
-    {
-        title: "タイトル2",
-        subheader: "サブヘッダー2",
-        avatarUrl: "https://joeschmoe.io/api/v1/random",
-        imageUrl: "https://picsum.photos/150"
-    },
-    {
-        title: "タイトル3",
-        subheader: "サブヘッダー3",
-        avatarUrl: "https://joeschmoe.io/api/v1/random",
-        imageUrl: "https://picsum.photos/150"
-    },
-    {
-        title: "タイトル4",
-        subheader: "サブヘッダー4",
-        avatarUrl: "https://joeschmoe.io/api/v1/random",
-        imageUrl: "https://picsum.photos/150"
-    },
-]
+    }
 
 function Content() {
     const [post, setPosts] = useState([])
 
     useEffect(() => {
+<<<<<<< HEAD
         // axios.get('https://jsonplaceholder.typicode.com/posts')
         axios.get('http://127.0.0.1:8000/api/posts/')
+=======
+        axios.get('https://jsonplaceholder.typicode.com/posts')
+>>>>>>> c06c333777836faf73ccd0a3f1f20c038bfb943e
         .then(res => {
             setPosts(res.data)
         })
