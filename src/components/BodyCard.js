@@ -11,7 +11,6 @@ import IconButton from '@material-ui/core/IconButton';
 import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 import { CardMedia } from '@material-ui/core';
 
-
 const useStyles = makeStyles({
     bullet: {
       display: 'inline-block',
@@ -24,11 +23,24 @@ const useStyles = makeStyles({
     pos: {
       marginBottom: 12,
     },
+    cHeader: {
+        height: '50px',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        "& .MuiCardHeader-content": {
+            overflow: 'hidden'
+        }
+    },
+    cContent: {
+        height: '200px',
+        overflow: 'hidden'
+    }
 });
 
 
 function BodyCard(props) {
-    const { avatarUrl, title, subheader, text, imageUrl } = props;
+    const { userId, id, title, body, avatarUrl, imageUrl } = props;
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
     return (
@@ -40,13 +52,13 @@ function BodyCard(props) {
                     <StarBorderOutlinedIcon />
                 </IconButton>
                 }
+                className={classes.cHeader}
                 title={title}
-                subheader={subheader}
             />
             <CardMedia style={{ height: "150px" }} image={imageUrl} />
-            <CardContent>
+            <CardContent className={classes.cContent}>
             <Typography variant="body2" component="p">
-                {text}
+                {body}
             </Typography>
             </CardContent>
             <CardActions>
@@ -55,4 +67,5 @@ function BodyCard(props) {
         </Card>
     );
 }
+
 export default BodyCard
